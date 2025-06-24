@@ -1,0 +1,86 @@
+<!-- income.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Income | AVRA Expense Tracker</title>
+</head>
+<body class="bg-gray-100">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <div class="bg-white w-64 shadow-md">
+      <div class="p-4 border-b flex flex-col items-center">
+        <img src="https://placehold.co/60x60" class="rounded-full mb-2" alt="User">
+        <h3 class="text-lg font-semibold" id="sidebarName">Ayush</h3>
+      </div>
+      <nav class="mt-4">
+        <ul class="space-y-1 px-2">
+          <li><a href="../dashboard/dashboard.html" class="block p-2 rounded hover:bg-blue-100">Dashboard</a></li>
+          <li><a href="income.html" class="block p-2 bg-blue-200 text-blue-700 font-semibold rounded">Income</a></li>
+          <li><a href="../expense/expense.html" class="block p-2 rounded hover:bg-blue-100">Expense</a></li>
+          <li><a href="#" class="block p-2 text-red-500 hover:bg-red-100">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6 space-y-6 overflow-auto">
+      <!-- Header -->
+      <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-gray-800">Income Overview</h1>
+        <div class="space-x-2">
+          <button id="downloadExcel" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Download</button>
+          <button id="openIncomeModal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">+ Add Income</button>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="bg-white p-4 rounded shadow">
+        <canvas id="incomeChart" height="100"></canvas>
+      </div>
+
+      <!-- Income Sources Grid -->
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-lg font-semibold mb-4">Income Sources</h2>
+        <div id="incomeGrid" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Income Modal -->
+  <div id="incomeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 relative">
+      <button id="closeIncomeModal" class="absolute top-2 right-2 text-gray-500 hover:text-black text-xl font-bold">&times;</button>
+      <h3 class="text-lg font-bold mb-4">Add New Income</h3>
+      <form id="incomeForm" class="space-y-4">
+        <div>
+          <label class="block mb-1">Source + Emoji</label>
+          <input type="text" id="incomeSource" class="w-full border rounded px-3 py-2" placeholder="💼 Salary" required />
+        </div>
+        <div>
+          <label class="block mb-1">Amount</label>
+          <input type="number" id="incomeAmount" class="w-full border rounded px-3 py-2" required />
+        </div>
+        <div>
+          <label class="block mb-1">Date</label>
+          <input type="date" id="incomeDate" class="w-full border rounded px-3 py-2" required />
+        </div>
+        <div class="flex space-x-2">
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex-1">Add</button>
+          <button type="button" id="cancelIncomeModal" class="bg-gray-400 text-white px-4 py-2 rounded flex-1 hover:bg-gray-500">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="incomeToast" class="fixed bottom-5 right-5 hidden bg-green-500 text-white px-4 py-2 rounded shadow-lg">
+    <span id="toastMessage"></span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="income.js"></script>
+</body>
+</html>

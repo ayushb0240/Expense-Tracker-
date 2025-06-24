@@ -1,0 +1,113 @@
+/* Previous styles... */
+
+/* ========== Sidebar ========== */
+.sidebar {
+  width: 220px;
+  background-color: #ede9fe;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  color: #4b0082;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav li {
+  margin: 20px 0;
+}
+
+.sidebar nav a {
+  text-decoration: none;
+  color: #4b0082;
+  font-weight: 500;
+  padding: 8px 12px;
+  display: block;
+  border-radius: 8px;
+}
+
+.sidebar nav a.active,
+.sidebar nav a:hover {
+  background-color: #c4b5fd;
+  color: white;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.dashboard-content {
+    display: none;
+}
+
+.modal-open {
+    overflow: hidden;
+}
+
+/* Form Styles */
+.form-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #4361ee;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #3a0ca3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 1rem;
+    }
+}

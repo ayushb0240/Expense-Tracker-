@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Avra - Track your expenses</title>
+<!-- Google Material Icons CDN -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
+<style>
+    /* Reset and basics */
+    html {
+    scroll-behavior: smooth;
+    }
+    #features {
+  padding: 80px 20px;
+  background: #f9f9ff;
+  text-align: center;
+}
+
+.features-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.features-text {
+  flex: 1 1 500px;
+  text-align: left;
+}
+
+.features-text h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.features-text ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features-text ul li {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.features-text ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #007bff;
+}
+
+.features-image {
+  flex: 1 1 400px;
+}
+
+.features-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+#support {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #f4f7ff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#support h2 {
+  color: #364fc7;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+#support p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.faq-container {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.faq {
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.faq h4 {
+  color: #4a6cf7;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.faq p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.contact-info {
+  margin-top: 30px;
+}
+
+.contact-info h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 15px 0;
+}
+
+.contact-info ul li a {
+  color: #4a6cf7;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-buttons button {
+  margin: 10px 15px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-buttons button:hover {
+  background-color: #2f3fb3;
+  transform: scale(1.05);
+}
+#about {
+  padding: 80px 20px;
+  background: #f1f5ff;
+  color: #333;
+}
+
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-text {
+  flex: 1 1 500px;
+  text-align: left;
+}
+
+.about-text h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-text ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-text ul li {
+  margin-bottom: 12px;
+  font-size: 17px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.about-text ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.about-image {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0; padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #f0e6ff 0%, #d2defe 75%, #f7f0fa 100%);
+        color: #222;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.6;
+    }
+    a, button {
+        cursor: pointer;
+        font-family: inherit;
+    }
+    img {
+        max-width: 100%;
+        display: block;
+        border-radius: 16px;
+    }
+    /* Container */
+    .container {
+        width: 90%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 16px 0;
+    }
+
+    /* Header */
+    header {
+        background: rgba(255 255 255 / 0.85);
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        box-shadow: 0 1px 8px rgb(0 0 0 / 0.1);
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 600;
+    }
+    .logo {
+        font-size: 1.4rem;
+        letter-spacing: 0.04em;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .logo .material-icons {
+        font-size: 2rem;
+        color: #5e3aeb;
+    }
+    nav.desktop-nav {
+        display: none;
+        gap: 32px;
+    }
+    nav.desktop-nav a {
+        color: #444;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 6px 8px;
+        border-radius: 8px;
+        transition: background-color 0.25s;
+    }
+    nav.desktop-nav a:hover,
+    nav.desktop-nav a[aria-current="page"] {
+        background-color: #5e3aeb;
+        color: white;
+    }
+    .auth-buttons {
+        display: flex;
+        gap: 12px;
+    }
+    .btn-signin,
+    .btn-signup {
+        padding: 8px 14px;
+        border-radius: 12px;
+        border: 2px solid #5e3aeb;
+        background-color: transparent;
+        color: #5e3aeb;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+    .btn-signup {
+        background-color: #5e3aeb;
+        color: white;
+        border: 2px solid #5e3aeb;
+    }
+    .btn-signin:hover {
+        background-color: #5e3aeb;
+        color: white;
+    }
+    .btn-signup:hover {
+        background-color: #4b27c2;
+        border-color: #4b27c2;
+    }
+
+    /* Hamburger menu for mobile */
+    .mobile-menu-icon {
+        font-family: 'Material Icons';
+        font-size: 2rem;
+        color: #5e3aeb;
+        cursor: pointer;
+        display: block;
+    }
+    nav.mobile-nav {
+        display: none;
+        background-color: #f5f2ff;
+        position: absolute;
+        top: 60px;
+        right: 16px;
+        width: 240px;
+        border-radius: 16px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        padding: 24px 16px;
+        flex-direction: column;
+        gap: 16px;
+        z-index: 1000;
+    }
+    nav.mobile-nav a {
+        color: #444;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
+    nav.mobile-nav a:hover {
+        color: #5e3aeb;
+    }
+
+    /* Hero Section */
+    main {
+        flex-grow: 1;
+    }
+    .hero {
+        padding: 64px 16px 32px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 48px;
+        align-items: center;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    .hero-text {
+        flex: 1 1 350px;
+        max-width: 600px;
+        min-width: 280px;
+    }
+    .hero-text h1 {
+        font-size: 3rem;
+        font-weight: 900;
+        margin-bottom: 16px;
+        color: #24184a;
+        line-height: 1.05;
+    }
+    .hero-text p {
+        font-size: 1.125rem;
+        color: #423f5d;
+        margin-bottom: 32px;
+    }
+    .hero-buttons {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .btn-primary,
+    .btn-secondary {
+        font-size: 1rem;
+        padding: 14px 32px;
+        border-radius: 16px;
+        font-weight: 700;
+        border: none;
+        min-width: 130px;
+        transition: transform 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        user-select: none;
+        cursor: pointer;
+    }
+    .btn-primary {
+        background-color: #5e3aeb;
+        color: white;
+        box-shadow: 0 6px 12px rgb(94 58 235 / 0.4);
+    }
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+        filter: brightness(1.15);
+        transform: scale(1.05);
+        outline: none;
+    }
+    .btn-secondary {
+        border: 2px solid #5e3aeb;
+        background-color: transparent;
+        color: #5e3aeb;
+    }
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+        background-color: #5e3aeb;
+        color: white;
+        outline: none;
+    }
+
+    /* Hero smartphone image container */
+    .hero-image {
+        flex: 1 1 300px;
+        max-width: 340px;
+        position: relative;
+        box-shadow: 0 10px 36px rgba(94, 58, 235, 0.15);
+        border-radius: 32px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #ac94fa, #d0baff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px 80px 20px;
+    }
+    .hero-image img {
+        width: 250px;
+        height: auto;
+        border-radius: 24px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.12);
+    }
+    .hero-image .btn-group {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        background: rgba(255 255 255 / 0.9);
+        border-radius: 24px;
+        box-shadow: 0 6px 18px rgba(94, 58, 235, 0.2);
+        padding: 8px 14px;
+    }
+    .hero-image .btn-group button {
+        background: none;
+        border: 1px solid #5e3aeb;
+        border-radius: 12px;
+        padding: 8px 14px;
+        cursor: pointer;
+        color: #5e3aeb;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: background-color 0.2s, color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .hero-image .btn-group button:hover,
+    .hero-image .btn-group button:focus-visible {
+        background-color: #5e3aeb;
+        color: white;
+        outline: none;
+    }
+
+    /* Footer */
+    footer {
+        background: #2c2560;
+        color: white;
+        padding: 32px 16px;
+        text-align: center;
+        font-size: 0.9rem;
+        user-select: none;
+    }
+    footer a {
+        color: #bbadff;
+        text-decoration: none;
+        font-weight: 600;
+        margin: 0 12px;
+        transition: color 0.3s;
+    }
+    footer a:hover,
+    footer a:focus-visible {
+        color: #dedffe;
+        outline: none;
+    }
+
+    /* Forms Modal Overlay */
+    #modal-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1500;
+        padding: 16px;
+    }
+    #modal-overlay.active {
+        display: flex;
+    }
+    .modal {
+        background: white;
+        border-radius: 24px;
+        width: 100%;
+        max-width: 480px;
+        padding: 32px 32px 40px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        position: relative;
+    }
+    .modal h2 {
+        margin-bottom: 24px;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: #342c7e;
+        text-align: center;
+    }
+    .modal form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .modal label {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #3a3568;
+    }
+    .modal input[type="text"],
+    .modal input[type="email"],
+    .modal input[type="password"] {
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1.5px solid #b8b8c7;
+        font-size: 1rem;
+        transition: border-color 0.25s ease;
+    }
+    .modal input[type="text"]:focus,
+    .modal input[type="email"]:focus,
+    .modal input[type="password"]:focus {
+        outline: none;
+        border-color: #5e3aeb;
+        box-shadow: 0 0 6px 1px rgba(94, 58, 235, 0.5);
+    }
+    .modal .btn-submit {
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 16px;
+        border: none;
+        background: #5e3aeb;
+        color: white;
+        font-weight: 700;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .modal .btn-submit:hover,
+    .modal .btn-submit:focus-visible {
+        background-color: #4b27c2;
+        outline: none;
+    }
+    .modal .btn-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        border: none;
+        background: none;
+        font-family: 'Material Icons';
+        font-size: 28px;
+        color: #555;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+    .modal .btn-close:hover,
+    .modal .btn-close:focus-visible {
+        color: #5e3aeb;
+        outline: none;
+    }
+    /* Responsive Design Breakpoints */
+    @media (min-width: 768px) {
+        nav.desktop-nav {
+            display: flex;
+        }
+        .mobile-menu-icon {
+            display: none;
+        }
+        nav.mobile-nav {
+            display: none !important;
+        }
+        .hero {
+            gap: 72px;
+            padding: 96px 16px 48px;
+        }
+    }
+    @media (min-width: 1440px) {
+        .container {
+            max-width: 1440px;
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="logo" aria-label="Avra Logo" tabindex="0">
+                <span class="material-icons" aria-hidden="true">account_balance_wallet</span>
+                Avra
+            </div>
+            <nav class="desktop-nav" aria-label="Primary navigation">
+                <a href="#home" class="scroll-button" tabindex="0">Home</a> 
+                <a href="#about" class="scroll-button" tabindex="0">About</a>
+                <a href="#features" class="scroll-button" tabindex="0">features</a>
+                <a href="#support" class="scroll-button" tabindex="0">Support</a>
+                
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn-signin" id="btn-signin" aria-haspopup="dialog" aria-controls="modal-overlay" onclick="window.location.href='sign_in/index1.html'">Sign In</button>
+                <button class="btn-signup" id="btn-signup" aria-haspopup="dialog" aria-controls="modal-overlay" onclick="window.location.href='sign_up/index2.html'">Sign Up</button>
+            </div>
+            <span class="mobile-menu-icon material-icons" id="mobile-menu-icon" aria-label="Open menu" role="button" tabindex="0">menu</span>
+        </div>
+        <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" role="menu">
+            <a href="#home" class="scroll-button" tabindex="-1">Home</a> 
+            <a href="#about" class="scroll-button" tabindex="-1">About</a>
+            <a href="#features" class="scroll-button" tabindex="-1">Features</a>
+            <a href="#support" class="scroll-button" tabindex="-1">Support</a>
+            <button class="btn-signin" id="btn-signin-mobile" aria-haspopup="dialog" aria-controls="modal-overlay" style="width: 100%;" onclick="window.location.href='sign_in/index1.html'">Sign In</button>
+            <button class="btn-signup" id="btn-signup-mobile" aria-haspopup="dialog" aria-controls="modal-overlay" style="width: 100%;" onclick="window.location.href='sign_up/index2.html'">Sign Up</button>
+        </nav>
+    </header>
+    
+
+<main aria-live="polite" aria-atomic="true" id="main-content">
+    <section class="hero" id="home" aria-label="Main landing section">
+        <div class="hero-text">
+            <h1>Track your expenses</h1>
+            <p>Avra is a digital service to manage your digital business easily.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" id="btn-get-started" data-page="get-started" aria-describedby="desc-get-started">
+                    Get started
+                    <span class="material-icons" aria-hidden="true">arrow_forward</span>
+                </button>
+                <button class="btn-secondary" id="btn-watch-video" data-page="watch-video" aria-describedby="desc-watch-video">
+                    Watch video
+                    <span class="material-icons" aria-hidden="true">play_circle_filled</span>
+                </button>
+            </div>
+        </div>
+        <div class="hero-image" aria-label="Mobile phone showing a digital finance app interface">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/776c89a8-8b49-448c-91e8-28a1d3394443.png" alt="Mobile phone showing a digital finance app interface on screen with current balance and transactions" />
+            <div class="btn-group" role="group" aria-label="Finance action buttons">
+                <button data-page="send" aria-describedby="desc-send">
+                    <span class="material-icons" aria-hidden="true">send</span>
+                    Send
+                </button>
+                <button data-page="top-up" aria-describedby="desc-topup">
+                    <span class="material-icons" aria-hidden="true">add_circle</span>
+                    Top Up
+                </button>
+                <button data-page="exchange" aria-describedby="desc-exchange">
+                    <span class="material-icons" aria-hidden="true">currency_exchange</span>
+                    Exchange
+                </button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer aria-label="Site footer">
+    <div class="container">
+        <p>© 2024 Avra. Manage your expenses digitally with ease.</p>
+        <nav aria-label="Footer navigation">
+            <a href="#" data-page="privacy" tabindex="0">Privacy</a> | 
+            <a href="#" data-page="terms" tabindex="0">Terms</a> | 
+            <a href="#" data-page="contact" tabindex="0">Contact</a>
+        </nav>
+    </div>
+</footer>
+
+<!-- Modals for Sign In/Sign Up -->
+<div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal" id="modal">
+        <button class="btn-close" id="modal-close" aria-label="Close modal">&times;</button>
+        <h2 id="modal-title">Sign In</h2>
+        <form id="auth-form" novalidate>
+            <label for="input-email">Email address</label>
+            <input type="email" id="input-email" name="email" autocomplete="email" required placeholder="email@example.com" />
+            <label for="input-password">Password</label>
+            <input type="password" id="input-password" name="password" required placeholder="Your password" />
+            <button type="submit" class="btn-submit">Sign In</button>
+            <p id="auth-switch-text" style="margin-top:16px; font-size: 0.9rem; text-align:center; color:#346;">
+                New user? <button type="button" id="switch-to-signup" style="background:none;border:none;color:#5e3aeb;cursor:pointer; text-decoration: underline;">Sign Up here</button>
+            </p>
+        </form>
+    </div>
+</div>
+
+<script>
+    (() => {
+        // Elements references
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const mobileNav = document.getElementById('mobile-nav');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modal = document.getElementById('modal');
+        const modalCloseBtn = document.getElementById('modal-close');
+        const authForm = document.getElementById('auth-form');
+        const modalTitle = modal.querySelector('h2#modal-title');
+        const authSwitchText = document.getElementById('auth-switch-text');
+
+        // Authentication state in localStorage: users stored as map email -> {password}
+        // current user saved under 'avra-current-user'
+        let currentMode = 'signin'; // or signup
+
+        // Toggle mobile navigation visibility
+        function toggleMobileMenu() {
+            const isOpen = mobileNav.style.display === 'flex';
+            if (isOpen) {
+                mobileNav.style.display = 'none';
+                mobileMenuIcon.setAttribute('aria-label', 'Open menu');
+            } else {
+                mobileNav.style.display = 'flex';
+                mobileMenuIcon.setAttribute('aria-label', 'Close menu');
+            }
+        }
+
+        mobileMenuIcon.addEventListener('click', toggleMobileMenu);
+        mobileMenuIcon.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMobileMenu();
+            }
+        });
+
+        // Close mobile nav on navigation link click
+        [...mobileNav.querySelectorAll('a'), ...mobileNav.querySelectorAll('button')].forEach(el => {
+    el.addEventListener('click', (e) => {
+        // ...
+    });
+});
+
+        // Show modal for Sign In or Sign Up
+        function showAuthModal(mode) {
+            currentMode = mode;
+            modalOverlay.classList.add('active');
+            if (mode === 'signin') {
+                modalTitle.textContent = 'Sign In';
+                authForm.querySelector('button[type="submit"]').textContent = 'Sign In';
+                authSwitchText.innerHTML = 'New user? <button type="button" id="switch-to-signup" style="background:none;border:none;color:#5e3aeb;cursor:pointer; text-decoration: underline;">Sign Up here</button>';
+            } else {
+                modalTitle.textContent = 'Sign Up';
+                authForm.querySelector('button[type="submit"]').textContent = 'Sign Up';
+                authSwitchText.innerHTML = 'Already have an account? <button type="button" id="switch-to-signin" style="background:none;border:none;color:#5e3aeb;cursor:pointer; text-decoration: underline;">Sign In here</button>';
+            }
+            // Add event listener on switches
+            setTimeout(() => {
+                if (mode === 'signin') {
+                    document.getElementById('switch-to-signup').addEventListener('click', () => showAuthModal('signup'));
+                } else {
+                    document.getElementById('switch-to-signin').addEventListener('click', () => showAuthModal('signin'));
+                }
+            }, 50); // slight delay for button to exist
+            authForm.reset();
+            authForm.querySelector('input').focus();
+        }
+
+        // Close modal
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+        }
+        modalCloseBtn.addEventListener('click', closeModal);
+
+        // Close modal on overlay click outside modal content
+        modalOverlay.addEventListener('click', e => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        // Press Escape closes modal
+        window.addEventListener('keydown', e => {
+            if(e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Sign In and Sign Up buttons open modal
+        const btnSignin = document.getElementById('btn-signin');
+        const btnSignup = document.getElementById('btn-signup');
+        const btnSigninMobile = document.getElementById('btn-signin-mobile');
+        const btnSignupMobile = document.getElementById('btn-signup-mobile');
+
+        [btnSignin, btnSignup, btnSigninMobile, btnSignupMobile].forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                const mode = btn.classList.contains('btn-signin') ? 'signin' : 'signup';
+                showAuthModal(mode);
+            });
+        });
+
+        // Utility to get users object from localStorage
+        function getUsers() {
+            const usersStr = localStorage.getItem('avra-users');
+            if (!usersStr) return {};
+            return JSON.parse(usersStr);
+        }
+        // Utility to set users object
+        function setUsers(users) {
+            localStorage.setItem('avra-users', JSON.stringify(users));
+        }
+        // Utility to set current user in localStorage
+        function setCurrentUser(email) {
+            localStorage.setItem('avra-current-user', email);
+        }
+        function clearCurrentUser() {
+            localStorage.removeItem('avra-current-user');
+        }
+        // Check if user exists
+        function userExists(email) {
+            const users = getUsers();
+            return users.hasOwnProperty(email);
+        }
+        // Validate email format basic
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // Auth form submission handler
+        authForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const email = authForm['email'].value.trim().toLowerCase();
+            const password = authForm['password'].value;
+
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters.');
+                return;
+            }
+
+            const users = getUsers();
+
+            if (currentMode === 'signup') {
+                if (userExists(email)) {
+                    alert('Email already registered. Please sign in.');
+                    return;
+                }
+                users[email] = { password };
+                setUsers(users);
+                setCurrentUser(email);
+                closeModal();
+                loadDashboard(email);
+            }
+            else if (currentMode === 'signin') {
+                if (!userExists(email)) {
+                    alert('No account found with this email. Please sign up.');
+                    return;
+                }
+                if (users[email].password !== password) {
+                    alert('Incorrect password.');
+                    return;
+                }
+                setCurrentUser(email);
+                closeModal();
+                loadDashboard(email);
+            }
+        });
+
+        // Dashboard page load - replace main content
+        // Shows simple dashboard confirming login with sign out option
+        function loadDashboard(email) {
+            document.getElementById('main-content').innerHTML = `
+                <section aria-label="Dashboard" style="margin: 32px auto; max-width: 900px; padding: 20px; border-radius: 20px; background: white; box-shadow: 0 10px 40px rgb(94 58 235 / 0.3);">
+                    <h1>Welcome to your dashboard</h1>
+                    <p>Hello, <strong>${email}</strong>. You are signed in.</p>
+                    <div style="margin-top: 32px;">
+                        <button class="btn-primary" id="btn-signout" aria-label="Sign out">Sign Out</button>
+                    </div>
+                </section>
+            `;
+            // Attach Sign Out listener
+            document.getElementById('btn-signout').addEventListener('click', () => {
+                clearCurrentUser();
+                reloadLandingPage();
+            });
+            window.scrollTo(0, 0);
+        }
+
+        // Reload landing page content to reset UI
+        function reloadLandingPage() {
+            location.reload();
+        }
+
+        // Map page keys to descriptive content for button pages
+        const pageDescriptions = {
+            'how-it-works': {
+                title: 'How Avra Works',
+                content: 'Avra helps you track and manage your expenses using simple, intuitive digital tools. Connect your accounts, send money, top up and exchange currencies, all in one place.'
+            },
+            'about': {
+                title: 'About Avra',
+                content: 'Avra is a modern digital finance platform focusing on ease of use, security, and transparency. Our mission is to help you control your expenses effortlessly.'
+            },
+            'support': {
+                title: 'Support',
+                content: 'Need help? Our support team is here to assist you. Whether you have questions about your account, transactions, or features, we provide timely support.'
+            },
+            'jobs': {
+                title: 'Careers at Avra',
+                content: 'Join our innovative team! We are always looking for talented individuals who are passionate about transforming digital finance.'
+            },
+            'get-started': {
+                title: 'Get Started',
+                content: 'Kickstart your journey with Avra. Sign up, connect your accounts, and start managing your expenses seamlessly.'
+            },
+            'watch-video': {
+                title: 'Watch Video',
+                content: 'Check out our quick video introduction to learn how Avra can simplify your expense management.'
+            },
+            'send': {
+                title: 'Send Money',
+                content: 'Send money easily and securely to friends, family, or businesses with just a few clicks.'
+            },
+            'top-up': {
+                title: 'Top Up',
+                content: 'Add funds to your account quickly to ensure you always have money when you need it.'
+            },
+            'exchange': {
+                title: 'Currency Exchange',
+                content: 'Exchange currencies seamlessly at competitive rates directly within Avra.'
+            },
+            'privacy': {
+                title: 'Privacy Policy',
+                content: 'We value your privacy and information security. Read our policies and learn how we protect your data.'
+            },
+            'terms': {
+                title: 'Terms of Service',
+                content: 'Understand the terms and conditions that govern your use of Avra services.'
+            },
+            'contact': {
+                title: 'Contact Us',
+                content: 'Reach out to us for inquiries, feedback, or assistance. We are here to help.'
+            },
+        };
+
+        // Handle all navigation and button clicks to load descriptive pages or dashboard
+        function loadPageContent(pageKey) {
+            if (pageKey === 'dashboard') {
+                const email = localStorage.getItem('avra-current-user') || 'Guest';
+                loadDashboard(email);
+                return;
+            }
+            const pageData = pageDescriptions[pageKey];
+            if (!pageData) return;
+
+            const { title, content } = pageData;
+
+            document.getElementById('main-content').innerHTML = `
+                <section aria-label="\${title}" style="margin: 24px auto; max-width: 900px; padding: 24px; border-radius: 24px; background: white; box-shadow: 0 10px 40px rgb(94 58 235 / 0.2);">
+                    <h1>\${title}</h1>
+                    <p style="margin-top: 12px; font-size: 1.1rem; color: #444;">\${content}</p>
+                    <div style="margin-top: 28px;">
+                        <button class="btn-secondary" id="btn-back-to-home" aria-label="Back to home page">Back to Home</button>
+                    </div>
+                </section>
+            `.replace(/\$\{/g, "${"); // To avoid template literal confusion
+
+            // Attach back to home button listener
+            document.getElementById('btn-back-to-home').addEventListener('click', () => {
+                reloadLandingPage();
+            });
+            window.scrollTo(0, 0);
+            document.querySelector('.scroll-button').addEventListener('click', function(e) {
+              e.preventDefault();
+    
+              const target = document.querySelector('#features');
+              target.scrollIntoView({
+                behavior: 'smooth'
+              });
+            });
+
+        }
+
+        // Attach click listeners to all nav and buttons, considering both desktop and mobile menu
+        function attachNavigationHandlers() {
+            // All nav links with data-page attribute
+            const navLinks = document.querySelectorAll('nav a[data-page]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    const pageKey = link.dataset.page;
+                    loadPageContent(pageKey);
+                });
+            });
+            // Hero buttons with data-page attribute
+            const heroButtons = document.querySelectorAll('[data-page]');
+            heroButtons.forEach(button => {
+                button.addEventListener('click', e => {
+                    e.preventDefault();
+                    const pageKey = button.dataset.page;
+                    loadPageContent(pageKey);
+                });
+            });
+        }
+
+        // On initial load
+        function init() {
+            attachNavigationHandlers();
+
+            // Auto redirect if user is already logged in
+            const currentUser = localStorage.getItem('avra-current-user');
+            if (currentUser) {
+                loadDashboard(currentUser);
+            }
+        }
+
+        // Initialize
+        init();
+    })();
+  document.addEventListener("DOMContentLoaded", function () {
+    const supportLink = document.querySelector('a[href="#support"]');
+
+    if (supportLink) {
+      supportLink.addEventListener("click", function (e) {
+        e.preventDefault(); // Prevent default jump
+        const targetSection = document.querySelector("#support");
+
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
+  })
+  document.addEventListener("DOMContentLoaded", function () {
+    const supportLink = document.querySelector('a[href="#support"]');
+
+    if (supportLink) {
+      supportLink.addEventListener("click", function (e) {
+        e.preventDefault(); // Prevent default jump
+        const targetSection = document.querySelector("#about");
+
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
+  }
+
+)
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("btn-get-started");
+    if (btn) {
+      btn.addEventListener("click", function () {
+        window.location.href = "sign_in/index1.html";
+      });
+    }
+  });
+</script>
+</body>
+
+<section id="features">
+    <div class="features-container">
+      <div class="features-text">
+        <h2>Key Features</h2>
+        <ul>
+          <li><strong>Income Management</strong> – Add, view, delete, and export income sources.</li>
+          <li><strong>Expense Management</strong> – Add, view, delete, and export expenses with category-based tracking.</li>
+          <li><strong>Interactive Charts</strong> – Visual representation of income & expenses using Bar, Pie, and Line charts.</li>
+          <li><strong>Recent Transactions</strong> – Displays the latest income and expense records for quick access.</li>
+          <li><strong>Reports</strong> – Download all income and expense data in Excel format.</li>
+        </ul>
+      </div>
+      <div class="features-image">
+        <img src="images/img3.png" alt="Dashboard UI Preview" />
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>About Avra</h2>
+        <p>
+          <strong>Avra</strong> is a smart and simple digital platform to manage your income, expenses, and budgeting with ease. Whether you're a student, a working professional, or a small business owner, Avra empowers you to take control of your finances.
+        </p>
+        <p>
+          Our intuitive dashboard, interactive charts, and detailed reporting tools allow you to visualize and track your financial habits in real-time. With secure data storage and easy access on all devices, Avra brings you one step closer to financial clarity.
+        </p>
+        <ul>
+          <li>✔ Track income and expenses seamlessly</li>
+          <li>✔ Generate visual insights with interactive charts</li>
+          <li>✔ Export reports in Excel format</li>
+          <li>✔ Categorize transactions for better management</li>
+          <li>✔ Mobile-first responsive design</li>
+        </ul>
+      </div>
+      <div class="about-image">
+        <img src="images/img2.png" alt="AVRA"
+      </div>
+    </div>
+  </section>
+
+<section id="support">
+    <h2>Support</h2>
+    <p>We're here to help you get the most out of Avra. Find answers below or reach out directly to us.</p>
+  
+    <div class="faq-container">
+      <div class="faq">
+        <h4>📌 How do I add a new expense?</h4>
+        <p>Click the "+" button on your dashboard and fill in the details.</p>
+      </div>
+      <div class="faq">
+        <h4>📌 Can I export my data?</h4>
+        <p>Yes, you can export data as CSV or PDF from the Reports tab.</p>
+      </div>
+      <div class="faq">
+        <h4>📌 How secure is my financial data?</h4>
+        <p>We use 256-bit SSL encryption to keep your data completely secure.</p>
+      </div>
+      <div class="faq">
+        <h4>📌 How do I reset my password?</h4>
+        <p>Go to the login page and click on "Forgot Password" to reset it.</p>
+      </div>
+      <div class="faq">
+        <h4>📌 Can I use Avra offline?</h4>
+        <p>Currently, Avra works online only. Offline mode is coming soon!</p>
+      </div>
+    </div>
+  
+    <div class="contact-info">
+      <h3>📞 Contact Us</h3>
+      <p><strong>Email:</strong></p>
+      <ul>
+        <li><a href="mailto:anniekhatri38@gmail.com">anniekhatri38@gmail.com</a></li>
+        <li><a href="mailto:anniekhatri0409@gmail.com">anniekhatri0409@gmail.com</a></li>
+      </ul>
+      <p><strong>Phone:</strong></p>
+      <ul>
+        <li><a href="tel:+918557009788">+91 85570 09788</a></li>
+        <li><a href="tel:+919350069714">+91 93500 69714</a></li>
+      </ul>
+  
+      <div class="contact-buttons">
+        <button onclick="window.location='mailto:anniekhatri38@gmail.com'">📧 Email Us</button>
+        <button onclick="window.open('https://wa.me/918557009788')">💬 WhatsApp Chat</button>
+      </div>
+    </div>
+  </section>
+
+
+
+
+</html>
